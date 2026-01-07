@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe: Elite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <div id="game-container">
+        <div id="menu" class="screen active">
+            <h1 class="glow-text">TIC-TAC-TOE<br><span class="subtitle">ELITE EDITION</span></h1>
+            <div class="button-group">
+                <button onclick="startGame('pvp')">Local PvP</button>
+                <button onclick="showAI()">Vs AI</button>
+                <button onclick="showInstructions()">Instructions</button>
+            </div>
+        </div>
+
+        <div id="ai-menu" class="screen">
+            <h2 class="glow-text">Difficulty</h2>
+            <div class="button-group">
+                <button class="btn-diff" onclick="startGame('ai', 'easy')">Easy</button>
+                <button class="btn-diff" onclick="startGame('ai', 'medium')">Medium</button>
+                <button class="btn-diff" onclick="startGame('ai', 'hard')">Master AI</button>
+                <button class="btn-back" onclick="showMenu()">Back</button>
+            </div>
+        </div>
+
+        <div id="instructions" class="screen">
+            <h2 class="glow-text">How to Play</h2>
+            <div class="glass-card">
+                <p>⚡ <b>15s:</b> A hint glows gold to guide you.</p>
+                <p>⏰ <b>30s:</b> Your turn is automatically skipped.</p>
+                <p>🏆 <b>Win:</b> Connect 3 neon icons to claim victory.</p>
+            </div>
+            <button class="btn-back" onclick="showMenu()">Back to Menu</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div id="status-card" class="glass-card">
+                <div id="timer-bar-container">
+                    <div id="timer-bar"></div>
+                </div>
+                <div id="status">Waiting...</div>
+            </div>
+            
+            <div id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+            <button class="btn-exit" onclick="showMenu()">Exit Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+:root {
+    --bg-dark: #0f172a;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --gold: #fbbf24;
+    --neon-x: #f43f5e;
+    --neon-o: #10b981;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-dark);
+    font-family: 'Inter', system-ui, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Background Flare Effects */
+.bg-circles .circle {
+    position: absolute;
+    filter: blur(80px);
+    z-index: -1;
+    border-radius: 50%;
+    animation: move 20s infinite alternate;
+}
+
+.bg-circles .circle:nth-child(1) {
+    width: 300px; height: 300px;
+    background: rgba(244, 63, 94, 0.2);
+    top: 10%; left: 10%;
+}
+
+.bg-circles .circle:nth-child(2) {
+    width: 400px; height: 400px;
+    background: rgba(16, 185, 129, 0.15);
+    bottom: 10%; right: 10%;
+    animation-delay: -5s;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 50px); }
+}
+
+/* Screens */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.screen.active { display: flex; animation: scaleUp 0.4s ease-out; }
+
+@keyframes scaleUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Glassmorphism Components */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.button-group{
+    display: flex;
+    gap: 2rem;
+}
+
+/* Buttons with Flare */
+button {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Board & Cells */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 15px;
+}
+
+.cell {
+    width: 100px; height: 100px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cell:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+
+/* Neon Symbols */
+.cell.x::after {
+    content: '✕';
+    color: var(--neon-x);
+    text-shadow: 0 0 15px var(--neon-x);
+    animation: symbolPop 0.3s ease;
+}
+
+.cell.o::after {
+    content: 'ⵔ';
+    color: var(--neon-o);
+    text-shadow: 0 0 15px var(--neon-o);
+    animation: symbolPop 0.3s ease;
+}
+
+@keyframes symbolPop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Timer Styling */
+#timer-bar-container {
+    width: 200px; height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+#timer-bar {
+    height: 100%; width: 100%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
